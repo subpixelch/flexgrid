@@ -1,0 +1,45 @@
+// v0.0.1
+
+gutter = 30px
+
+html
+  overflow-x: hidden
+  overflow-y: scroll
+
+row(gut = gutter)
+  display: flex
+  flex-wrap: wrap
+  margin-left: -(gut / 2)
+  margin-right: -(gut / 2)
+.row
+  row()
+
+block(ratio = 1, gut = gutter)
+  if gut > 0
+    min-width: s('calc(100% * %s - %s)', ratio, gut)
+    margin-left: (gut / 2)
+    margin-right: (gut / 2)
+  if gut is 0
+    min-width: s('calc(100% * %s)', ratio)
+
+offset(ratio = false, gut = gutter)
+  if gut > 0
+    if ratio > 0
+      margin-left: s('calc(100% * %s + (%s / 2))', ratio, gut)
+    if ratio < 0
+      margin-right: s('calc(-100% * %s + (%s / 2))', ratio, gut)
+  if gut is 0
+    if ratio > 0
+      margin-left: s('calc(100% * %s)', ratio)
+    if ratio < 0
+      margin-right: s('calc(-100% * %s)', ratio)
+
+stack()
+  flex-direction: column
+.stack
+  stack()
+
+expand()
+  flex-grow: 1
+.expand
+  expand()
