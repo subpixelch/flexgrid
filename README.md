@@ -11,7 +11,7 @@ FlexBox grid system for Stylus.
 
 
 ### Installation
-Just `@import` [flexGrid.styl](flexGrid.styl) at the top of your Stylus stylesheet.
+Just `@import` [flexgrid.styl](flexgrid.styl) at the top of your Stylus stylesheet.
 
 ##### Stylus CLI
 - `npm i -g flexgrid`
