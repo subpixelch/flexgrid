@@ -1,0 +1,25 @@
+{
+  "name": "flexgrid",
+  "main": "flexgrid.styl",
+  "version": "1.0.0",
+  "homepage": "https://github.com/corysimmons/flexgrid",
+  "authors": [
+    "Cory Simmons <csimmonswork@gmail.com>"
+  ],
+  "description": "A Stylus FlexBox grid system.",
+  "keywords": [
+    "flexbox",
+    "grid",
+    "flex",
+    "css",
+    "stylus"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
