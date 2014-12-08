@@ -1,6 +1,6 @@
-# flexGrid
+# flexgrid
 
-Flexbox grid system for Stylus.
+FlexBox grid system for Stylus.
 
 ### Features that set this grid apart
 - Pass ratios (fractions or decimals) to assign sizing (e.g. `block(1/4)` would create blocks that are 1/4 the size of their container with a gutter between them)
@@ -44,6 +44,7 @@ Now plop some blocks in there...
 
 ```stylus
 section
+  overflow-x: hidden
   > div
     row()
   .block
@@ -51,6 +52,8 @@ section
 ```
 
 Plop as many blocks as you want. They'll wrap down to the next line nicely.
+
+**A note on overflow:** You might get some overflow as a result of the negative margins. You can get rid of this with `overflow-x: hidden` applied to wrapping containers.
 
 ### Nesting
 Anytime you want to nest, you'll need to add another one of those row divs in there and apply `row()` to it.
