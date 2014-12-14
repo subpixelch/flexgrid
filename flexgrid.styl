@@ -1,18 +1,23 @@
-// v1.0.0
+// v1.1.0
 
 gutter = 20px
 
 row(gut = gutter)
   display: flex
   flex-wrap: wrap
-  margin-left: -(gut / 2)
-  margin-right: -(gut / 2)
+  if gut is not 0
+    margin-left: -(gut / 2)
+    margin-right: -(gut / 2)
 
 block(ratio = 1, gut = gutter)
   flex-grow: 1
   margin: (gut / 2)
-  min-width: s('calc(100% * %s - %s)', ratio, gut)
-  max-width: s('calc(100% * %s - %s)', ratio, gut)
+  if gut is 0
+    min-width: s('calc(100% * %s)', ratio)
+    max-width: s('calc(100% * %s)', ratio)
+  else
+    min-width: s('calc(100% * %s - %s)', ratio, gut)
+    max-width: s('calc(100% * %s - %s)', ratio, gut)
 
 offset(ratio = false, gut = gutter)
   if gut > 0
