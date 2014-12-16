@@ -1,4 +1,4 @@
-// v1.1.0
+// v1.2.0
 
 gutter = 20px
 
@@ -13,9 +13,11 @@ block(ratio = 1, gut = gutter)
   flex-grow: 1
   margin: (gut / 2)
   if gut is 0
+    flex-basis: s('calc(100% * %s)', ratio)
     min-width: s('calc(100% * %s)', ratio)
     max-width: s('calc(100% * %s)', ratio)
   else
+    flex-basis: s('calc(100% * %s - %s)', ratio, gut)
     min-width: s('calc(100% * %s - %s)', ratio, gut)
     max-width: s('calc(100% * %s - %s)', ratio, gut)
 
