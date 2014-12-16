@@ -122,6 +122,36 @@ section
 ```
 
 
+### flex()
+These act the same way as `block()` but just have a different type of output behavior. Simply change `block()` to `flex()` and it will automatically span the remaining columns to fit 100% of the container's width. [See it in action here](http://codepen.io/Flip4Bytes/pen/gbrJaz)
+
+```html
+<section>
+  <div>
+
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+
+  </div>
+</section>
+```
+
+```stylus
+section
+  > div
+    row(gut)
+  .block
+    flex(1/3)
+```
+
+In this example, it would create two rows with all blocks spanning 1/3 each. Now unlike `row()` (which would would create a second row with two columns filling 1/3 each and a third column that is empty), `flex()` takes the remaining columns and flexes them to fill up the entire width of the space.
+
+e.g. if two columns are left over in a new row, it will make them each 50% instead of just keeping them both at 33%.
+
+
 ### Source Ordering
 Since we're using FlexBox you can simply swap the order of elements with the `order` rule.
 
