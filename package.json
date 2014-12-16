@@ -1,6 +1,6 @@
 {
   "name": "flexgrid",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A Stylus FlexBox grid system.",
   "main": "flexgrid.js",
   "repository": {
