@@ -1,5 +1,5 @@
 {
-  "name": "flexgrid",
+  "name": "flex-grid",
   "main": "stylus/flexgrid.styl",
   "version": "3.0.0",
   "homepage": "https://github.com/corysimmons/flexgrid",
