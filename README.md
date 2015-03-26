@@ -1,181 +1,81 @@
-# flexgrid
+# FlexGrid
 
-FlexBox grid system for Stylus.
+A unique Flexbox grid system for SCSS and Stylus that allows you to create horizontal or vertical Flexbox grids on-the-fly.
 
 
-### Features that set this grid apart
+### Features
+
+- Ability to create vertical grids
 - Pass ratios (fractions or decimals) to assign sizing (e.g. `block(1/4)` would create blocks that are 1/4 the size of their container with a gutter between them)
-- Works with [Masonry](http://isotope.metafizzy.co/) and other jQuery plugins like it
+- Works with [Isotope](http://isotope.metafizzy.co/) and other jQuery plugins like it
 - Consistently sized nested gutters without any additional context needing to be passed (i.e. `block(1/4)` works the same if it's a top level element or nested)
-- Vertical source ordering with FlexBox
 
 
 ### Installation
-Just `@import` [flexgrid.styl](flexgrid.styl) at the top of your Stylus stylesheet.
 
-##### Stylus CLI
-- `npm i -g flexgrid`
-- `stylus -u flexgrid -w style.styl`
-- Put `@import 'flexgrid'` at the top of `style.styl`
-
-##### Bower
-- `bower i flex-grid`
-- Put `@import 'project/path/bower_components/flexgrid/flexgrid'` at the top of your Stylus file.
+- Just `@import` FlexGrid at the top of your stylesheet.
 
 
 ### Usage
-Rows are the only tricky bit. Anytime you want to create a grid, you need to create 2 wrapping elements and slap a `row()` onto the inner container.
+
+FlexGrid operates with one primary mixin: `box()`. `box()` accepts a few arguments, but the main 3 you need to worry about are `$ratio` (fraction), `$dir` (direction), and `$flex`.
+
+The markup for each box is `box > wrap > items`. Here's an example that will make the `figure` elements `1/3` of their container.
 
 ```html
 <section>
   <div>
-    ...
+    <figure>...</figure>
+    <figure>...</figure>
+    <figure>...</figure>
   </div>
 </section>
 ```
 
 ```stylus
 section
-  > div
-    row()
+  box(1/3)
 ```
 
-Now plop some blocks in there...
-
-```html
-<section>
-  <div>
-
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-
-  </div>
-</section>
-```
+Now let's make those elements display vertically instead of horizontally.
 
 ```stylus
 section
-  overflow-x: hidden
-  > div
-    row()
-  .block
-    block(1/3)
+  box(1/3, $dir: column)
 ```
 
-Plop as many blocks as you want. They'll wrap down to the next line nicely.
-
-**A note on overflow:** You might get some overflow as a result of the negative margins. You can get rid of this with `overflow-x: hidden` applied to wrapping containers.
-
-
-### Nesting
-Anytime you want to nest, you'll need to add another one of those row divs in there and apply `row()` to it.
-
-```html
-<section>
-  <div class="row">
-
-    <div class="block">
-      <div class="row">
-
-        <div class="block"></div>
-        <div class="block"></div>
-
-      </div>
-    </div>
-    <div class="block"></div>
-
-  </div>
-</section>
-```
+By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply pass `true` to the `$flex` parameter.
 
 ```stylus
 section
-  .row
-    row()
-  .block
-    block(1/2)
+  box(1/3, $dir: column, $flex: true)
 ```
 
-
-### Spanning
-If you don't want gutters between your elements, just mark the second parameter (`gut`) as `0` for both your `row` and your `block` mixins.
-
-```html
-<section>
-  <div>
-
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-
-  </div>
-</section>
-```
+If you're using the default grid, elements will stack to the side of (or below) other elements when you run out of room on a row (or column). Sometimes this creates a scrollbar that will offset grids aligned to this grid. To add a placeholder scrollbar and make your grids align again, pass `true` to `$scroll` for the grid without a scrollbar.
 
 ```stylus
 section
-  > div
-    row(gut: 0)
-  .block
-    block(1/3, gut: 0)
+  box(1/3, $dir: column, $flex: true, $scroll: true)
 ```
 
-
-### flex()
-These act the same way as `block()` but just have a different type of output behavior. Simply change `block()` to `flex()` and it will automatically span the remaining columns to fit 100% of the container's width. [See it in action here](http://codepen.io/Flip4Bytes/pen/gbrJaz)
-
-```html
-<section>
-  <div>
-
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-
-  </div>
-</section>
-```
+Finally, you may want to have a gutter for a specific grid. Just pass the `$gut` parameter your gutter size.
 
 ```stylus
 section
-  > div
-    row(gut)
-  .block
-    flex(1/3)
+  box(1/3, $dir: column, $flex: true, $scroll: true, $gut: 60px)
 ```
 
-In this example, it would create two rows with all blocks spanning 1/3 each. Now unlike `row()` (which would would create a second row with two columns filling 1/3 each and a third column that is empty), `flex()` takes the remaining columns and flexes them to fill up the entire width of the space.
 
-e.g. if two columns are left over in a new row, it will make them each 50% instead of just keeping them both at 33%.
+### Settings
+
+- `$gutter` - The gutter size between grid elements.
 
 
-### Source Ordering
-Since we're using FlexBox you can simply swap the order of elements with the `order` rule.
+### Note
 
-```html
-<section>
-  <div>
+The grid, like Flexbox, takes some getting used to, but once you get the hang of it, it adds a lot of power to Flexbox by letting you size and space things according to a grid you have in mind.
 
-    <aside>Sidebar</aside>
-    <article>Content</article>
 
-  </div>
-</section>
-```
+### Browser Support
 
-```stylus
-section
-  > div
-    row(gut)
-  aside
-    block(1/2)
-    order: 2
-  article
-    block(1/2)
-    order: 1
-```
-
-This is a pretty great FlexBox feature since there's no way to do vertical source ordering any other way.
+- We are using both [Flexbox](http://caniuse.com/#feat=flexbox) (IE10) and [calc()](http://caniuse.com/#feat=calc) (IE9). So IE10+ with poor support in older Android devices.
