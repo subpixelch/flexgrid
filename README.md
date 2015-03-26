@@ -4,7 +4,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/npm/v/flexgrid.svg">
-  <img src="https://img.shields.io/bower/v/flexgrid.svg">
+  <img src="https://img.shields.io/bower/v/flex-grid.svg">
   <img src="http://img.shields.io/npm/dm/flexgrid.svg">
 </p>
 
