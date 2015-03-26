@@ -1,29 +1,23 @@
-# flexgrid
+# FlexGrid
 
-FlexBox grid system for Stylus.
+A unique Flexbox grid system for SCSS and Stylus.
 
 
-### Features that set this grid apart
+### Features
+
 - Pass ratios (fractions or decimals) to assign sizing (e.g. `block(1/4)` would create blocks that are 1/4 the size of their container with a gutter between them)
-- Works with [Masonry](http://isotope.metafizzy.co/) and other jQuery plugins like it
+- Works with [Isotope](http://isotope.metafizzy.co/) and other jQuery plugins like it
 - Consistently sized nested gutters without any additional context needing to be passed (i.e. `block(1/4)` works the same if it's a top level element or nested)
-- Vertical source ordering with FlexBox
+- Vertical source ordering with Flexbox
 
 
 ### Installation
-Just `@import` [flexgrid.styl](flexgrid.styl) at the top of your Stylus stylesheet.
 
-##### Stylus CLI
-- `npm i -g flexgrid`
-- `stylus -u flexgrid -w style.styl`
-- Put `@import 'flexgrid'` at the top of `style.styl`
-
-##### Bower
-- `bower i flex-grid`
-- Put `@import 'project/path/bower_components/flexgrid/flexgrid'` at the top of your Stylus file.
+- Just `@import` FlexGrid at the top of your stylesheet.
 
 
 ### Usage
+
 Rows are the only tricky bit. Anytime you want to create a grid, you need to create 2 wrapping elements and slap a `row()` onto the inner container.
 
 ```html
@@ -69,6 +63,7 @@ Plop as many blocks as you want. They'll wrap down to the next line nicely.
 
 
 ### Nesting
+
 Anytime you want to nest, you'll need to add another one of those row divs in there and apply `row()` to it.
 
 ```html
@@ -99,6 +94,7 @@ section
 
 
 ### Spanning
+
 If you don't want gutters between your elements, just mark the second parameter (`gut`) as `0` for both your `row` and your `block` mixins.
 
 ```html
@@ -123,6 +119,7 @@ section
 
 
 ### flex()
+
 These act the same way as `block()` but just have a different type of output behavior. Simply change `block()` to `flex()` and it will automatically span the remaining columns to fit 100% of the container's width. [See it in action here](http://codepen.io/Flip4Bytes/pen/gbrJaz)
 
 ```html
@@ -153,7 +150,8 @@ e.g. if two columns are left over in a new row, it will make them each 50% inste
 
 
 ### Source Ordering
-Since we're using FlexBox you can simply swap the order of elements with the `order` rule.
+
+Since we're using Flexbox you can simply swap the order of elements with the `order` rule.
 
 ```html
 <section>
@@ -178,4 +176,9 @@ section
     order: 1
 ```
 
-This is a pretty great FlexBox feature since there's no way to do vertical source ordering any other way.
+This is a pretty great Flexbox feature since there's no other way to do vertical source ordering.
+
+
+### Browser Support
+
+- We are using both [Flexbox](http://caniuse.com/#feat=flexbox) (IE10) and [calc()](http://caniuse.com/#feat=calc) (IE9). So IE10+ with poor support in older Android devices.
