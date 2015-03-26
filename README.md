@@ -1,4 +1,12 @@
-# FlexGrid
+<p align="center">
+  <img src="http://corysimmons.github.io/flexgrid/img/flexgrid-logo.svg">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/npm/v/flexgrid.svg">
+  <img src="https://img.shields.io/bower/v/flexgrid.svg">
+  <img src="http://img.shields.io/npm/dm/flexgrid.svg">
+</p>
 
 A unique Flexbox grid system for SCSS and Stylus that allows you to create horizontal or vertical Flexbox grids on-the-fly.
 
