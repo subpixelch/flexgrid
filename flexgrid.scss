@@ -1,0 +1,131 @@
+// flexgrid 3.0.0 - https://github.com/corysimmons/flexgrid
+
+
+$gutter: 30px !default;
+
+
+@mixin box($ratio: 1, $dir: row, $flex: false, $scroll: false, $gut: $gutter) {
+
+  @if ($dir == 'row') {
+    overflow-x: hidden;
+    @if ($scroll) {
+      overflow-y: scroll;
+    }
+  } @else {
+    overflow-y: hidden;
+    @if ($scroll) {
+      overflow-x: scroll;
+    }
+  }
+
+  > * {
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: $dir;
+
+    @if ($dir == 'row') {
+      height: 100%;
+      @if ($gut != 0) {
+        margin-left: -($gut / 2);
+        margin-right: -($gut / 2);
+      }
+
+      > * {
+        flex-grow: 1;
+        margin-left: ($gut / 2);
+        margin-right: ($gut / 2);
+        height: 100%;
+
+        @if ($gut == 0) {
+          @if ($flex) {
+            flex-grow: 1;
+            min-width: 0;
+            max-width: none;
+          } @else {
+            flex-basis: calc(100% * #{$ratio});
+            min-width: calc(100% * #{$ratio});
+            max-width: calc(100% * #{$ratio});
+          }
+        } @else {
+          @if ($flex) {
+            flex-grow: 1;
+            min-width: 0;
+            max-width: none;
+          } @else {
+            flex-basis: calc(100% * #{$ratio} - #{$gut});
+            min-width: calc(100% * #{$ratio} - #{$gut});
+            max-width: calc(100% * #{$ratio} - #{$gut});
+          }
+        }
+      }
+    }
+
+    @if ($dir == 'column') {
+
+      @if ($gut == 0) {
+        height: 100%;
+      } @else {
+        height: calc(100% + #{$gut});
+      }
+
+      @if ($gut != 0) {
+        margin-top: -($gut / 2);
+        margin-bottom: -($gut / 2);
+      }
+
+      > * {
+        flex-grow: 1;
+        margin-top: ($gut / 2);
+        margin-bottom: ($gut / 2);
+
+        @if ($gut == 0) {
+          @if ($flex) {
+            flex-grow: 1;
+            min-height: 0;
+            max-height: none;
+          } @else {
+            flex-basis: calc(100% * #{$ratio});
+            min-height: calc(100% * #{$ratio});
+            max-height: calc(100% * #{$ratio});
+          }
+        } @else {
+          @if ($flex) {
+            flex-grow: 1;
+            min-height: 0;
+            max-height: none;
+          } @else {
+            flex-basis: calc(100% * #{$ratio} - #{$gut});
+            min-height: calc(100% * #{$ratio} - #{$gut});
+            max-height: calc(100% * #{$ratio} - #{$gut});
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
+
+
+@mixin offset($ratio: 1, $gut: $gutter) {
+  @if $gut > 0 {
+    @if $ratio > 0 {
+      margin-right: calc(100% * #{$ratio} + (#{$gut} / 2));
+    } @else {
+      margin-left: calc(-100% * #{$ratio} + (#{$gut} / 2));
+    }
+  } @else {
+    @if ($ratio > 0) {
+      margin-right: calc(100% * #{$ratio});
+    } @else {
+      margin-left: calc(100% * #{$ratio});
+    }
+  }
+}
+
+
+html, body {
+  height: 100%;
+}
