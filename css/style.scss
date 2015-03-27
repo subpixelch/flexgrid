@@ -13,7 +13,7 @@ section {
     figure {
       background: tomato;
       &:nth-child(1) {
-        @include flex();
+        flex-grow: 1;
       }
     }
   }
@@ -22,7 +22,7 @@ section {
     figure {
       background: dodgerblue;
       &:nth-child(2) {
-        @include flex(column);
+        flex-grow: 1;
       }
     }
   }

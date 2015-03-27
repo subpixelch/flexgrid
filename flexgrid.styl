@@ -1,11 +1,10 @@
-// flexgrid 3.0.1 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.1.0 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
 
 
 box($ratio = 1, $dir = row, $flex = false, $scroll = false, $gut = $gutter)
-
   if $dir is row
     overflow-x: hidden
     if $scroll
@@ -14,89 +13,38 @@ box($ratio = 1, $dir = row, $flex = false, $scroll = false, $gut = $gutter)
     overflow-y: hidden
     if $scroll
       overflow-x: scroll
-
   > *
-
     display: flex
     flex-wrap: wrap
     flex-direction: $dir
-
+    > *
+      if $flex is true
+        flex-grow: 1
+      if $gut is 0
+        flex-basis: s('calc(100% * %s)', $ratio)
+      else
+        flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
     if $dir is row
       height: 100%
       if $gut is not 0
         margin-left: -($gut / 2)
         margin-right: -($gut / 2)
-
       > *
-        flex-grow: 1
         margin-left: ($gut / 2)
         margin-right: ($gut / 2)
-        height: 100%
-
-        if $gut is 0
-          if $flex is true
-            flex-grow: 1
-            min-width: 0
-            max-width: none
-          else
-            flex-basis: s('calc(100% * %s)', $ratio)
-            min-width: s('calc(100% * %s)', $ratio)
-            max-width: s('calc(100% * %s)', $ratio)
-        else
-          if $flex is true
-            flex-grow: 1
-            min-width: 0
-            max-width: none
-          else
-            flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
-            min-width: s('calc(100% * %s - %s)', $ratio, $gut)
-            max-width: s('calc(100% * %s - %s)', $ratio, $gut)
-
-    if $dir is column
-
+        if $flex is true
+          flex-grow: 1
+    else
       if $gut is 0
         height: 100%
       else
         height: s('calc(100% + %s)', $gut)
-
       if $gut is not 0
         margin-top: -($gut / 2)
         margin-bottom: -($gut / 2)
-
       > *
-        flex-grow: 1
         margin-top: ($gut / 2)
         margin-bottom: ($gut / 2)
-
-        if $gut is 0
-          if $flex is true
-            flex-grow: 1
-            min-height: 0
-            max-height: none
-          else
-            flex-basis: s('calc(100% * %s)', $ratio)
-            min-height: s('calc(100% * %s)', $ratio)
-            max-height: s('calc(100% * %s)', $ratio)
-        else
-          if $flex is true
-            flex-grow: 1
-            min-height: 0
-            max-height: none
-          else
-            flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
-            min-height: s('calc(100% * %s - %s)', $ratio, $gut)
-            max-height: s('calc(100% * %s - %s)', $ratio, $gut)
-
-
-flex($dir = row)
-  if $dir is row
-    flex-grow: 1
-    min-width: 0
-    max-width: none
-  else
-    flex-grow: 1
-    min-height: 0
-    max-height: none
 
 
 offset($ratio = 1, $gut = $gutter)
