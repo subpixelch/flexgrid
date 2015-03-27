@@ -1,4 +1,4 @@
-// flexgrid 3.1.3 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.1.4 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
@@ -24,6 +24,8 @@ box($ratio = 1, $dir = row, $flex = false, $scroll = false, $gut = $gutter)
         flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
       if $flex is true
         flex-grow: 1
+      if $flex is masonry
+        flex-basis: auto
     if $dir is row
       height: 100%
       if $gut is not 0
