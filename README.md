@@ -98,9 +98,7 @@ section
 - `$gutter` - The gutter size between grid elements.
 
 
-### Note
-
-The grid, like Flexbox, takes some getting used to, but once you get the hang of it, it adds a lot of power to Flexbox by letting you size and space things according to a grid you have in mind.
+> **Note** The grid, like Flexbox, takes some getting used to, but once you get the hang of it, it adds a lot of power to Flexbox by letting you size and space things according to a grid you have in mind.
 
 
 ### Browser Support
