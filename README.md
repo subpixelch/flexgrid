@@ -52,11 +52,11 @@ section
   box(1/3, $dir: column)
 ```
 
-By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply pass `true` to the `$flex` parameter.
+By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply pass `flex` to the `$flex` parameter.
 
 ```stylus
 section
-  box(1/3, $dir: column, $flex: true)
+  box(1/3, $dir: column, $flex: flex)
 ```
 
 `$flex` can also be configured to create CSS [masonry](http://masonry.desandro.com/) easily.
@@ -70,14 +70,14 @@ If you're using the default grid, elements will stack to the side of (or below) 
 
 ```stylus
 section
-  box(1/3, $dir: column, $flex: true, $scroll: true)
+  box(1/3, $dir: column, $flex: flex, $scroll: true)
 ```
 
 Finally, you may want to have a gutter for a specific grid. Just pass the `$gut` parameter your gutter size.
 
 ```stylus
 section
-  box(1/3, $dir: column, $flex: true, $scroll: true, $gut: 60px)
+  box(1/3, $dir: column, $flex: flex, $scroll: true, $gut: 60px)
 ```
 
 
