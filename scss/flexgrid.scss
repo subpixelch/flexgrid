@@ -1,4 +1,4 @@
-// flexgrid 3.1.5 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.2.0 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px !default;
@@ -26,7 +26,7 @@ $gutter: 30px !default;
       } @else {
         flex-basis: calc(100% * #{$ratio} - #{$gut});
       }
-      @if ($flex == true) {
+      @if ($flex == flex) {
         flex-grow: 1;
       }
       @if ($flex == masonry) {
