@@ -73,25 +73,6 @@ section
   box(1/3, $dir: column, $flex: true, $scroll: true, $gut: 60px)
 ```
 
-To make an element within a `box` flex, use the `flex()` mixin which accepts a direction (`row` or `column`).
-
-```html
-<section>
-  <div>
-    <figure>...</figure>
-    <figure>...</figure>
-  </div>
-</section>
-```
-
-```stylus
-section
-  box(1/3)
-  figure
-    &:nth-child(1)
-      flex()
-```
-
 
 ### Settings
 
