@@ -1,4 +1,4 @@
-// flexgrid 3.0.0 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.0.1 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px !default;
@@ -106,6 +106,19 @@ $gutter: 30px !default;
 
   }
 
+}
+
+
+@mixin flex($dir: row) {
+  @if ($dir == row) {
+    flex-grow: 1;
+    min-width: 0;
+    max-width: none;
+  } @else {
+    flex-grow: 1;
+    min-height: 0;
+    max-height: none;
+  }
 }
 
 

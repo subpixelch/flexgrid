@@ -1,4 +1,4 @@
-// flexgrid 3.0.0 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.0.1 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
@@ -86,6 +86,17 @@ box($ratio = 1, $dir = row, $flex = false, $scroll = false, $gut = $gutter)
             flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
             min-height: s('calc(100% * %s - %s)', $ratio, $gut)
             max-height: s('calc(100% * %s - %s)', $ratio, $gut)
+
+
+flex($dir = row)
+  if $dir is row
+    flex-grow: 1
+    min-width: 0
+    max-width: none
+  else
+    flex-grow: 1
+    min-height: 0
+    max-height: none
 
 
 offset($ratio = 1, $gut = $gutter)
