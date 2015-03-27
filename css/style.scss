@@ -13,7 +13,6 @@ section {
     figure {
       background: tomato;
       &:nth-child(1) {
-        background: red;
         @include flex();
       }
     }

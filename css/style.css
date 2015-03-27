@@ -44,7 +44,6 @@ section:nth-of-type(1) figure {
   background: #ff6347;
 }
 section:nth-of-type(1) figure:nth-child(1) {
-  background: #f00;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
