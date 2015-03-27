@@ -1,4 +1,4 @@
-// flexgrid 3.1.1 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.1.2 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px !default;
@@ -21,13 +21,14 @@ $gutter: 30px !default;
     flex-wrap: wrap;
     flex-direction: $dir;
     > * {
-      @if ($flex == true) {
-        flex-grow: 1;
-      }
       @if ($gut == 0) {
         flex-basis: calc(100% * #{$ratio});
       } @else {
         flex-basis: calc(100% * #{$ratio} - #{$gut});
+      }
+      @if ($flex == true) {
+        flex-grow: 1;
+        flex-basis: auto;
       }
     }
     @if ($dir == row) {
