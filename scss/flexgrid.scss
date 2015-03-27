@@ -1,4 +1,4 @@
-// flexgrid 3.1.0 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.1.1 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px !default;
@@ -39,9 +39,6 @@ $gutter: 30px !default;
       > * {
         margin-left: ($gut / 2);
         margin-right: ($gut / 2);
-        @if ($flex == true) {
-          flex-grow: 1;
-        }
       }
     } @else {
       @if ($gut == 0) {
