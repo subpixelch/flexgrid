@@ -15,7 +15,7 @@ A unique Flexbox grid system for SCSS and Stylus that allows you to create horiz
 
 - Ability to create vertical grids
 - Pass ratios (fractions or decimals) to assign sizing (e.g. `block(1/4)` would create blocks that are 1/4 the size of their container with a gutter between them)
-- Works with [Isotope](http://isotope.metafizzy.co/) and other jQuery plugins like it
+- Easy CSS masonry
 - Consistently sized nested gutters without any additional context needing to be passed (i.e. `block(1/4)` works the same if it's a top level element or nested)
 
 
@@ -57,6 +57,13 @@ By default FlexGrid displays elements in a traditional grid. This means elements
 ```stylus
 section
   box(1/3, $dir: column, $flex: true)
+```
+
+`$flex` can also be configured to create CSS [masonry](http://masonry.desandro.com/) easily.
+
+```stylus
+section
+  box(1/3, $dir: column, $flex: masonry)
 ```
 
 If you're using the default grid, elements will stack to the side of (or below) other elements when you run out of room on a row (or column). Sometimes this creates a scrollbar that will offset grids aligned to this grid. To add a placeholder scrollbar and make your grids align again, pass `true` to `$scroll` for the grid without a scrollbar.
