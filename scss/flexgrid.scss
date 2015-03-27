@@ -1,4 +1,4 @@
-// flexgrid 3.1.3 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.1.4 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px !default;
@@ -28,6 +28,9 @@ $gutter: 30px !default;
       }
       @if ($flex == true) {
         flex-grow: 1;
+      }
+      @if ($flex == masonry) {
+        flex-basis: auto;
       }
     }
     @if ($dir == row) {
