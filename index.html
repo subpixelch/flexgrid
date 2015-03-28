@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>FlexGrid Demo</title>
+    <title>FlexGrid</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//use.typekit.net/evl0ywl.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     <!--[if lt IE 9]>
@@ -23,57 +25,153 @@
     <![endif]-->
 
 
-    <section>
+    <section class="masthead">
       <div>
-        <figure>
-          <img src="http://placehold.it/350x100&text=1">
-        </figure>
-        <figure>
-          <img src="http://placehold.it/200x100&text=2">
-        </figure>
-        <figure>
-          <img src="http://placehold.it/100x100&text=3">
-        </figure>
-        <figure>
-          <img src="http://placehold.it/150x100&text=4">
-        </figure>
-        <figure>
-          <img src="http://placehold.it/250x100&text=5">
-        </figure>
-        <figure>
-          <img src="http://placehold.it/300x100&text=6">
-        </figure>
-        <figure>
-          <img src="http://placehold.it/200x100&text=7">
-        </figure>
-      </div>
-    </section>
 
-    <section>
-      <div>
-        <img src="http://placehold.it/350x150&text=1">
-        <img src="http://placehold.it/300x150&text=2">
-        <img src="http://placehold.it/150x150&text=3">
-        <img src="http://placehold.it/350x150&text=4">
-        <img src="http://placehold.it/250x150&text=5">
-        <img src="http://placehold.it/150x150&text=6">
-        <img src="http://placehold.it/350x150&text=7">
-      </div>
-    </section>
+        <div class="logo">
+          <a href="http://github.com/corysimmons/flexgrid">
+            <img src="img/flexgrid-logo.svg">
+          </a>
+        </div>
 
-    <section>
-      <div>
-        <figure>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, expedita?
-        </figure>
-        <figure>
-          Lorem ipsum dolor sit.
-        </figure>
-        <figure>
-          Lorem ipsum dolor sit.
-        </figure>
+        <div class="github">
+          <a href="http://github.com/corysimmons/flexgrid">
+            <img src="img/github.svg">
+          </a>
+        </div>
+
       </div>
     </section>
+    <!-- /.masthead -->
+
+
+    <section class="features">
+      <div>
+
+        <div>
+          <h5>CSS Masonry</h5>
+          <p>
+            baked right into a <code>$flex</code> param.
+          </p>
+        </div>
+
+        <div>
+          <h5>Vertical Grids</h5>
+          <p>
+            for the first time in CSS history.
+          </p>
+        </div>
+
+        <div>
+          <h5>Fractionally Sized Elements</h5>
+          <p>
+            for insane flexibility.
+          </p>
+        </div>
+
+        <div>
+          <h5><code>calc()</code> Based</h5>
+          <p>
+            for consistent gutters.
+          </p>
+        </div>
+
+      </div>
+    </section>
+    <!-- /.features -->
+
+
+
+    <div class="demos">
+
+      <header>
+        <img src="img/arrow-left.svg" class="prev">
+        <div class="headers">
+          <h1 class="js-active">Masonry</h1>
+          <h1 class="js-hidden">Vertical Grids</h1>
+          <h1 class="js-hidden">Fraction Grids</h1>
+        </div>
+        <img src="img/arrow-right.svg" class="next">
+      </header>
+
+      <img class="device">
+
+      <div class="demos-wrap">
+
+        <div class="demo-1 js-active">
+          <section>
+            <div>
+              <img src="http://placehold.it/700x150&text=1">
+              <img src="http://placehold.it/400x150&text=2">
+              <img src="http://placehold.it/200x150&text=3">
+              <img src="http://placehold.it/375x150&text=4">
+              <img src="http://placehold.it/250x150&text=5">
+              <img src="http://placehold.it/225x150&text=6">
+              <img src="http://placehold.it/380x150&text=7">
+            </div>
+          </section>
+        </div>
+        <!-- /.demo-1 -->
+
+        <div class="demo-2 js-hidden">
+          <section>
+            <div>
+              <figure>1</figure>
+              <figure>2</figure>
+              <figure>3</figure>
+              <figure>4</figure>
+              <figure>5</figure>
+            </div>
+          </section>
+          <section>
+            <div>
+              <figure>6</figure>
+              <figure>7</figure>
+              <figure>8</figure>
+              <figure>9</figure>
+              <figure>10</figure>
+            </div>
+          </section>
+        </div>
+        <!-- /.demo-2 -->
+
+        <div class="demo-3 js-hidden">
+          <section>
+            <div>
+              <figure>1/2</figure>
+              <figure>1/2</figure>
+            </div>
+          </section>
+          <section>
+            <div>
+              <figure>1/3</figure>
+              <figure>1/3</figure>
+              <figure>1/3</figure>
+            </div>
+          </section>
+          <section>
+            <div>
+              <figure>1/5</figure>
+              <figure>1/5</figure>
+              <figure>1/5</figure>
+              <figure>1/5</figure>
+              <figure>1/5</figure>
+            </div>
+          </section>
+          <section>
+            <div>
+              <figure>1.5/3</figure>
+              <figure>1.5/3</figure>
+            </div>
+          </section>
+        </div>
+        <!-- /.demo-2 -->
+
+      </div>
+      <!-- /.demos-wrap -->
+
+    </div>
+    <!-- /.demos -->
 
 
     <!--[if lt IE 9]>

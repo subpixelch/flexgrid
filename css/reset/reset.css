@@ -17,13 +17,14 @@ body:after,
 }
 *,
 *:before,
-*:after,
-*::before,
-*::after {
+*:after {
   *behavior: url("js/vendor/boxsizing.htc");
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+h1, figure, fieldset {
+  margin: 0;
 }
 html {
   overflow-y: scroll;
@@ -31,6 +32,7 @@ html {
 }
 body {
   width: 100%;
+  overflow-x: hidden;
 }
 img,
 video,
@@ -57,8 +59,4 @@ iframe {
 }
 .browsehappy a:hover {
   text-decoration: none;
-}
-
-figure {
-  margin: 0;
 }

@@ -1,22 +1,185 @@
-@import 'reset.css'
-@import '../flexgrid'
+@import 'reset/reset.css'
+@import '/bower_components/flex-grid/stylus/flexgrid.styl'
+@import '/bower_components/typographic/stylus/typographic.styl'
+@import 'settings'
+
+
+typographic()
+
+trans()
+  transition: all 500ms ease
 
 html
-  padding: 30px
+  overflow-y: hidden
 
-section
-  box(1/3, $flex: flex)
-  &:nth-of-type(2), &:nth-of-type(3)
-    box(1/3, $flex: masonry)
+body
+  overflow-y: scroll
+  padding: 60px
+  +below($min-width)
+    padding: 45px 0 0
+
+.masthead
+  box(1/4)
+  padding: 0 30px
+  +below($min-width)
+    box(1/2)
   > *
-    > img
-      background: tomato
-      margin-bottom: 30px
-      padding: 15px
+    > *
+      display: flex
+      justify-content: center
+      align-items: center
+      margin-bottom: 60px
+  .logo
+    background: none
+    offset(1/2)
+    img
+      display: block
+    +below($min-width)
+      margin-right: 15px
+  .github
+    a
+      trans()
+      &:hover
+        opacity: .8
+      img
+        display: block
+        height: 60px
 
-figure
-  background: tomato
+
+.features
+  box(1/4)
+  trans()
+  padding: 0 30px
+  text-align: center
   margin-bottom: 30px
-  padding: 15px
-  img
-    width: 100%
+  > *
+    > *
+      background: dodgerblue
+      color: darken(dodgerblue, 50%)
+      padding: 30px
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      border-radius: 20px
+      &:last-child
+        margin-bottom: 0
+        +below($min-width)
+          margin-bottom: 15px
+
+      +below($min-width)
+        order: 3
+  p
+    &:last-of-type
+      margin-bottom: 0
+  +below($min-width)
+    box(1/4, column)
+    > *
+      > *
+        border-radius: 10px
+
+.demos
+  position: relative
+  padding: 30px
+  header
+    text-align: center
+    img, .headers
+      display: inline-block
+    img
+      cursor: pointer
+      opacity: .5
+      trans()
+      &:hover
+        opacity: 1
+  h1
+    padding: 0 60px
+    color: dodgerblue
+    text-align: center
+    margin-bottom: 45px
+    font-size: 45px
+    +below(1040px)
+      font-size: 35px
+    +below(700px)
+      font-size: 25px
+  .device
+    width: 980px
+    margin: auto
+    display: block
+    +below(1040px)
+      width: 640px
+    +below(700px)
+      width: 340px
+  [class*="demo-"]
+    overflow-y: scroll
+    background: white
+    position: absolute
+    width: 750px
+    height: 470px
+    display: block
+    top: 63px
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    font-weight: bold
+    +below(1040px)
+      top: 80px
+      width: 580px
+      height: 760px
+    +below(700px)
+      width: 295px
+      height: 520px
+
+.js-hidden
+  display: none !important
+
+.demo-1
+  section
+    box($flex: masonry)
+    padding: 15px 30px
+    img
+      padding: 15px 0
+
+.demo-2
+  section
+    box(1/3, column)
+    float: left
+    width: 50%
+    &:first-child
+      padding: 30px 15px 30px 30px
+    &:last-child
+      padding: 30px 30px 30px 15px
+    > *
+      > *
+        background: tomato
+        color: white
+        padding: 30px
+        text-align: center
+
+.demo-3
+  padding: 30px
+  section
+    > *
+      > *
+        background: springgreen
+        color: darken(springgreen, 50%)
+        text-align: center
+        margin-bottom: 30px
+        padding: 30px
+        overflow: hidden
+        +below(1040px)
+          padding: 15px
+        +below(700px)
+          padding: 5px 0
+          font-weight: normal
+    &:nth-of-type(1)
+      box(1/2)
+    &:nth-of-type(2)
+      box(1/3)
+    &:nth-of-type(3)
+      box(1/5)
+    &:nth-of-type(4)
+      box(1.5/3)
+      > *
+        > *
+          margin-bottom: 0

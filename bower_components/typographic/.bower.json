@@ -1,0 +1,38 @@
+{
+  "name": "typographic",
+  "version": "2.8.1",
+  "homepage": "https://github.com/corysimmons/typographic",
+  "authors": [
+    "Cory Simmons <cory@launchboxhq.com>"
+  ],
+  "description": "Responsive typography with modular scale, font stacks, and more.",
+  "main": "typographic.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "stylus",
+    "css",
+    "typography",
+    "responsive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "demo"
+  ],
+  "_release": "2.8.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.8.1",
+    "commit": "473c6ccab7bf0ec3dfa662e479068aa83f31f819"
+  },
+  "_source": "git://github.com/corysimmons/typographic.git",
+  "_target": "~2.8.1",
+  "_originalSource": "typographic",
+  "_direct": true
+}
