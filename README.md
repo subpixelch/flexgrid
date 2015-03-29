@@ -58,6 +58,26 @@ figure
   block(1/3, column)
 ```
 
+Maybe you'd like to have one element larger than the others?
+
+```html
+<section>
+  <figure>...</figure>
+  <figure>...</figure>
+</section>
+```
+
+```stylus
+section
+  box()
+
+figure
+  &:first-child
+    block(2/3)
+  &:last-child
+    block(1/3)
+```
+
 By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply use the `flex()` mixin.
 
 ```html
