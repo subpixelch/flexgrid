@@ -26,67 +26,96 @@ A unique Flexbox grid system for SCSS and Stylus that allows you to create horiz
 
 ### Usage
 
-FlexGrid operates with one primary mixin: `box()`. `box()` accepts a few arguments, but the main 3 you need to worry about are `$ratio` (fraction), `$dir` (direction), and `$flex`.
+FlexGrid operates primarily on 2 mixins: `box()` and `block()`.
 
-The markup for each box is `box > wrap > items`. Here's an example that will make the `figure` elements `1/3` of their container.
+Think of `box()` like the container element in other grid systems - except it can work vertically as well as horizontally.
+
+Think of `block()` like the columns in other grid systems - except it can work vertically as well as horizontally.
 
 ```html
 <section>
-  <div>
-    <figure>...</figure>
-    <figure>...</figure>
-    <figure>...</figure>
-  </div>
+  <figure>...</figure>
+  <figure>...</figure>
+  <figure>...</figure>
 </section>
 ```
 
 ```stylus
 section
-  box(1/3)
+  box()
+
+figure
+  block(1/3)
 ```
 
 Now let's make those elements display vertically instead of horizontally.
 
 ```stylus
 section
-  box(1/3, $dir: column)
+  box(column)
+
+figure
+  block(1/3, column)
 ```
 
-By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply pass `flex` to the `$flex` parameter.
+By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply use the `flex()` mixin.
+
+```html
+<section>
+  <figure>...</figure>
+  <figure>...</figure>
+</section>
+```
 
 ```stylus
 section
-  box(1/3, $dir: column, $flex: flex)
+  box()
+
+figure
+  block(1/3)
+  &:first-child
+    flex()
 ```
 
-`$flex` can also be configured to create CSS [masonry](http://masonry.desandro.com/) easily.
+`flex()` can also be configured to create CSS [masonry](http://masonry.desandro.com/) easily.
+
+```html
+<section>
+  <img src="http://placehold.it/700x150&text=1">
+  <img src="http://placehold.it/400x150&text=2">
+  <img src="http://placehold.it/200x150&text=3">
+  <img src="http://placehold.it/375x150&text=4">
+  ...
+</section>
+```
 
 ```stylus
 section
-  box(1/3, $dir: column, $flex: masonry)
+  box()
+
+img
+  block(1/3)
+  &:first-child
+    flex(masonry)
 ```
 
-If you're using the default grid, elements will stack to the side of (or below) other elements when you run out of room on a row (or column). Sometimes this creates a scrollbar that will offset grids aligned to this grid. To add a placeholder scrollbar and make your grids align again, pass `true` to `$scroll` for the grid without a scrollbar.
+Finally, you may want to have a gutter for a specific grid. Just pass the `$gut` parameter your gutter size for both the `box()` and the `block()`.
 
 ```stylus
 section
-  box(1/3, $dir: column, $flex: flex, $scroll: true)
-```
+  box($gut: 60px)
 
-Finally, you may want to have a gutter for a specific grid. Just pass the `$gut` parameter your gutter size.
-
-```stylus
-section
-  box(1/3, $dir: column, $flex: flex, $scroll: true, $gut: 60px)
+figure
+  block(1/3, $gut: 60px)
 ```
 
 
 ### Settings
 
-- `$gutter` - The gutter size between grid elements.
+- `$gutter` - The default gutter size between all grid elements.
 
 
-> **Note** The grid, like Flexbox, takes some getting used to, but once you get the hang of it, it adds a lot of power to Flexbox by letting you size and space things according to a grid you have in mind.
+> **Note** The grid, like Flexbox, takes some getting used to, but once you get the hang of it, it adds a lot of power to Flexbox by letting you size and space things according to a real grid other than just with proportions. Feel free to mix real Flexbox rules into your stylesheets as FlexGrid doesn't impede on Flexbox in any way.
 
 
 ### Browser Support
