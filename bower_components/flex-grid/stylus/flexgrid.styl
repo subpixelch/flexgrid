@@ -54,6 +54,8 @@ box($dir = row, $gut = $gutter)
 block($ratio = 1, $dir = row, $gut = $gutter)
   if $gut is 0
     flex-basis: s('calc(100% * %s)', $ratio)
+    margin-left: 0
+    margin-right: 0
   else
     flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
     if $dir is row
