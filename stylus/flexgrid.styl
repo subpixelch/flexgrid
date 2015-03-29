@@ -1,4 +1,4 @@
-// flexgrid 3.2.1 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.2.2 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
@@ -77,6 +77,9 @@ box($ratio = 1, $dir = row, $flex = false, $scroll = false, $gut = $gutter)
  */
 
 offset($ratio = 1, $gut = $gutter)
+  if $ratio is 0
+    margin-left: ($gut / 2)
+    margin-right: ($gut / 2)
   if $gut > 0
     if $ratio > 0
       margin-right: s('calc(100% * %s + (%s / 2))', $ratio, $gut)

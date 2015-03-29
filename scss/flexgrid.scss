@@ -1,4 +1,4 @@
-// flexgrid 3.2.1 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.2.2 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px !default;
@@ -92,6 +92,10 @@ $gutter: 30px !default;
 ///   }
 
 @mixin offset($ratio: 1, $gut: $gutter) {
+  @if ($ratio == 0) {
+    margin-left: ($gut / 2);
+    margin-right: ($gut / 2);
+  }
   @if ($gut > 0) {
     @if ($ratio > 0) {
       margin-right: calc(100% * #{$ratio} + (#{$gut} / 2));
