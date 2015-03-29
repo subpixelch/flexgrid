@@ -1,0 +1,138 @@
+// flexgrid 4.0.0 - https://github.com/corysimmons/flexgrid
+
+
+$gutter = 30px
+
+
+/**
+ * Sets properties on a container necessary for flexed items to go inside. Think of this like your row in a row > column grid system, except it can work vertically as well as horizontally.
+ *
+ * @param {string} [$dir=row] - Which direction the layout will go. Accepts row (horizontal) or column (vertical).
+ * @param {number} [$gut=$gutter] - Sets a custom gutter width for this grid. Accepts any CSS unit and should probably match the block()'s $gut value.
+ *
+ * @example
+ *   .container
+ *     box($dir: row, $gut: 60px)
+ */
+
+box($dir = row, $gut = $gutter)
+  display: flex
+  flex-wrap: wrap
+  flex-direction: $dir
+
+  if $dir is row
+    overflow-x: hidden
+    overflow-y: inherit
+  else
+    overflow-x: inherit
+    overflow-y: hidden
+
+  if $gut is not 0
+    if $dir is row
+      margin-left: -($gut / 2)
+      margin-right: -($gut / 2)
+    else
+      margin-top: -($gut / 2)
+      margin-bottom: -($gut / 2)
+      height: s('calc(100% + %s)', $gut)
+
+
+/**
+ * Specifies the sizing and spacing of the element it's applied to. The column in a row > column grid system except it can go vertical as well as horizontal.
+ *
+ * @param {fraction} [$ratio=1] - A fraction of the container for the element to span.
+ * @param {string} [$dir=row] - Which direction the layout will go. Accepts row (horizontal) or column (vertical).
+ * @param {number} [$gut=$gutter] - Sets a custom gutter width for this element. Accepts any CSS unit and should probably match the box()'s $gut value.
+ *
+ * @example
+ *   section
+ *     box($gut: 60px)
+ *     .element
+ *       box(1/3, 60px)
+ */
+
+block($ratio = 1, $dir = row, $gut = $gutter)
+  if $gut is 0
+    flex-basis: s('calc(100% * %s)', $ratio)
+  else
+    flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
+    if $dir is row
+      margin-left: ($gut / 2)
+      margin-right: ($gut / 2)
+    else
+      margin-top: ($gut / 2)
+      margin-bottom: ($gut / 2)
+
+
+/**
+ * Stretches elements to take up flexed space or sets elements to perform Flexbox CSS masonry.
+ *
+ * @param {string} [$layout=grow] - Sets what type of layout Flexbox will create. This can be grow or masonry. grow will fill remaining space. Masonry will create CSS masonry.
+ *
+ * @example
+ *   section
+ *     box()
+ *     padding: 15px 30px
+ *     > img
+ *       block(1/3)
+ *       flex(masonry)
+ *       margin-top: 15px
+ *       margin-bottom: 15px
+ */
+
+flex($layout = grow)
+  if $layout is masonry
+    flex-grow: 1
+    flex-basis: auto
+  else
+    flex-grow: 1
+
+
+/**
+ * Creates a horizontal offset between columns. Unfortunately it's not possible to create a vertical offset between columns because CSS percentages are relative to the width of a containing element.
+ *
+ * @param {fraction} [$ratio=1] - A fraction of the container for the element to set a margin of. Can be positive or negative.
+ * @param {number} [$gut=$gutter] - Sets a custom gutter width for this offset. It should match the grid in question's gutter. Accepts any CSS unit.
+ *
+ * @example
+ *   section
+ *     box()
+ *     > figure
+ *       block(1/3)
+ *       &:first-child
+ *         offset(1/3)
+ */
+
+offset($ratio = 1, $gut = $gutter)
+  if $ratio is 0
+    margin-left: ($gut / 2)
+    margin-right: ($gut / 2)
+  if $gut > 0
+    if $ratio > 0
+      margin-right: s('calc(100% * %s + (%s / 2))', $ratio, $gut)
+    else
+      margin-left: s('calc(-100% * %s + (%s / 2))', $ratio, $gut)
+  else
+    if $ratio > 0
+      margin-right: s('calc(100% * %s)', $ratio)
+    else
+      margin-left: s('calc(100% * %s)', $ratio)
+
+
+/**
+ * Sets a translucent background color to all elements it affects. Helpful while setting up, or debugging, the structure of your site to make sure all items are cleared correctly.
+ *
+ * @param {color} [$bg=blue] - A color to be lightened, so make sure you pick a darkish color.
+ *
+ * @example
+ *   section
+ *     edit(red)
+ */
+
+edit($bg = blue)
+  *
+    background: rgba($bg, 10%)
+
+
+html, body
+  height: 100%

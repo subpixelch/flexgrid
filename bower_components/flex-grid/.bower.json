@@ -1,0 +1,38 @@
+{
+  "name": "flex-grid",
+  "main": "stylus/flexgrid.styl",
+  "version": "4.0.0",
+  "homepage": "https://github.com/corysimmons/flexgrid",
+  "authors": [
+    "Cory Simmons <cory@launchboxhq.com>",
+    "Alex Bass <flip4bytes@gmail.com>"
+  ],
+  "description": "A unique Flexbox grid system for SCSS and Stylus.",
+  "keywords": [
+    "flexbox",
+    "grid",
+    "flex",
+    "css",
+    "stylus",
+    "sass",
+    "scss"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "4.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "4.0.0",
+    "commit": "f2547d7b3dd2812c3525d34d9b9bfe4bc934c471"
+  },
+  "_source": "git://github.com/corysimmons/flexgrid.git",
+  "_target": "~4.0.0",
+  "_originalSource": "flex-grid",
+  "_direct": true
+}
