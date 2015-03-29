@@ -1,4 +1,4 @@
-// flexgrid 3.2.2 - https://github.com/corysimmons/flexgrid
+// flexgrid 3.3.0 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
@@ -10,23 +10,18 @@ $gutter = 30px
  * @param {fraction} [$ratio=1] - A fraction of the container for the element to span.
  * @param {string} [$dir=row] - Which direction the layout will go. Accepts row (horizontal) or column (vertical).
  * @param {string} [$flex=false] - Decides if the items should stretch to fill the container or remain traditional grid items. Accepts false, flex (for a generally fixed width where remaining elements will stretch), or masonry (where elements lay together like bricks).
- * @param {boolean} [$scroll=false] - Creates a scrollbar for the outer container element. Useful if you have two outer container elements lined up and one of them produces a scrollbar while the other one does not. This will give them both scrollbars and help line your grid back up.
  * @param {number} [$gut=$gutter] - Sets a custom gutter width for this grid. Accepts any CSS unit.
  *
  * @example
  *   .container
- *     box($ratio: 1/3, $dir: row, $flex: masonry, $scroll: false, $gut: 60px)
+ *     box($ratio: 1/3, $dir: row, $flex: masonry, $gut: 60px)
  */
 
-box($ratio = 1, $dir = row, $flex = false, $scroll = false, $gut = $gutter)
+box($ratio = 1, $dir = row, $flex = false, $gut = $gutter)
   if $dir is row
     overflow-x: hidden
-    if $scroll
-      overflow-y: scroll
   else
     overflow-y: hidden
-    if $scroll
-      overflow-x: scroll
   > *
     display: flex
     flex-wrap: wrap
