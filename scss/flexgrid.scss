@@ -108,6 +108,22 @@ $gutter: 30px !default;
 }
 
 
+/// Sets a translucent background color to all elements it affects. Helpful while setting up, or debugging, the structure of your site to make sure all items are cleared correctly.
+///
+/// @param {color} $bg [blue] - A color to be lightened, so make sure you pick a darkish color.
+///
+/// @example
+///   section {
+///     @include edit(red);
+///   }
+
+@mixin edit($bg: blue) {
+  * {
+    background: rgba($bg, 0.1);
+  }
+}
+
+
 html, body {
   height: 100%;
 }
