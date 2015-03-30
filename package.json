@@ -2,7 +2,7 @@
   "name": "flexgrid",
   "version": "4.0.2",
   "description": "A unique Flexbox grid system for SCSS and Stylus.",
-  "main": "flexgrid.js",
+  "main": "stylus/flexgrid.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/corysimmons/flexgrid.git"
