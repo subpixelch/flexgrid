@@ -1,4 +1,4 @@
-// flexgrid 4.0.3 - https://github.com/corysimmons/flexgrid
+// flexgrid 4.0.4 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px;
@@ -56,11 +56,11 @@ $gutter: 30px;
 
 @mixin block($ratio: 1, $dir: row, $gut: $gutter) {
   @if ($gut == 0) {
-    flex-basis: calc(100% * #{$ratio});
+    flex: 0 0 calc(100% * #{$ratio});
     margin-left: 0;
     margin-right: 0;
   } @else {
-    flex-basis: calc(100% * #{$ratio} - #{$gut});
+    flex: 0 0 calc(100% * #{$ratio} - #{$gut});
     @if ($dir == row) {
       margin-left: ($gut / 2);
       margin-right: ($gut / 2);
@@ -90,8 +90,7 @@ $gutter: 30px;
 
 @mixin flex($layout: grow) {
   @if ($layout == masonry) {
-    flex-grow: 1;
-    flex-basis: auto;
+    flex: 1 0 auto;
   } @else {
     flex-grow: 1;
   }
