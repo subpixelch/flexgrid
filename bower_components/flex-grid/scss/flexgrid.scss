@@ -1,4 +1,4 @@
-// flexgrid 4.0.0 - https://github.com/corysimmons/flexgrid
+// flexgrid 4.0.4 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px;
@@ -56,11 +56,11 @@ $gutter: 30px;
 
 @mixin block($ratio: 1, $dir: row, $gut: $gutter) {
   @if ($gut == 0) {
-    flex-basis: calc(100% * #{$ratio});
+    flex: 0 0 calc(100% * #{$ratio});
     margin-left: 0;
     margin-right: 0;
   } @else {
-    flex-basis: calc(100% * #{$ratio} - #{$gut});
+    flex: 0 0 calc(100% * #{$ratio} - #{$gut});
     @if ($dir == row) {
       margin-left: ($gut / 2);
       margin-right: ($gut / 2);
@@ -90,8 +90,7 @@ $gutter: 30px;
 
 @mixin flex($layout: grow) {
   @if ($layout == masonry) {
-    flex-grow: 1;
-    flex-basis: auto;
+    flex: 1 0 auto;
   } @else {
     flex-grow: 1;
   }
@@ -147,6 +146,37 @@ $gutter: 30px;
 @mixin edit($bg: blue) {
   * {
     background: rgba($bg, .1);
+  }
+}
+
+
+/// Vertically and/or horizontally align nested elements.
+///
+/// @param {string} $dir [both] - Both, vertical, v, horizontal, or h.
+///
+/// @example
+///   .parent {
+///     @include align(vertical);
+///     width: 600px;
+///     height: 400px;
+///     .child {
+///       width: 300px;
+///       height: 150px;
+///     }
+///   }
+
+@mixin align($dir: both) {
+  display: flex;
+  @if ($dir == 'horizontal') or ($dir == 'h') {
+    justify-content: center;
+  } @else if ($dir == 'vertical') or ($dir == 'v') {
+    align-items: center;
+  } @else if ($dir == 'reset') {
+    justify-content: inherit;
+    align-items: inherit;
+  } @else {
+    justify-content: center;
+    align-items: center;
   }
 }
 
