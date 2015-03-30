@@ -1,4 +1,4 @@
-// flexgrid 4.0.4 - https://github.com/corysimmons/flexgrid
+// flexgrid 4.1.0 - https://github.com/corysimmons/flexgrid
 
 
 $gutter: 30px;
@@ -82,13 +82,13 @@ $gutter: 30px;
 ///     padding: 15px 30px;
 ///     > img {
 ///       @include block(1/3);
-///       @include flex(masonry);
+///       @include stretch(masonry);
 ///       margin-top: 15px;
 ///       margin-bottom: 15px;
 ///     }
 ///   }
 
-@mixin flex($layout: grow) {
+@mixin stretch($layout: grow) {
   @if ($layout == masonry) {
     flex: 1 0 auto;
   } @else {

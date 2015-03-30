@@ -1,4 +1,4 @@
-// flexgrid 4.0.4 - https://github.com/corysimmons/flexgrid
+// flexgrid 4.1.0 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
@@ -77,12 +77,12 @@ block($ratio = 1, $dir = row, $gut = $gutter)
  *     padding: 15px 30px
  *     > img
  *       block(1/3)
- *       flex(masonry)
+ *       stretch(masonry)
  *       margin-top: 15px
  *       margin-bottom: 15px
  */
 
-flex($layout = grow)
+stretch($layout = grow)
   if $layout is masonry
     flex: 1 0 auto
   else
