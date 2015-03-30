@@ -1,4 +1,4 @@
-// flexgrid 4.0.4 - https://github.com/corysimmons/flexgrid
+// flexgrid 4.1.0 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
@@ -53,11 +53,11 @@ box($dir = row, $gut = $gutter)
 
 block($ratio = 1, $dir = row, $gut = $gutter)
   if $gut is 0
-    flex: 0 0 s('calc(100% * %s)', $ratio)
+    flex-basis: s('calc(100% * %s)', $ratio)
     margin-left: 0
     margin-right: 0
   else
-    flex: 0 0 s('calc(100% * %s - %s)', $ratio, $gut)
+    flex-basis: s('calc(100% * %s - %s)', $ratio, $gut)
     if $dir is row
       margin-left: ($gut / 2)
       margin-right: ($gut / 2)
@@ -77,12 +77,12 @@ block($ratio = 1, $dir = row, $gut = $gutter)
  *     padding: 15px 30px
  *     > img
  *       block(1/3)
- *       flex(masonry)
+ *       stretch(masonry)
  *       margin-top: 15px
  *       margin-bottom: 15px
  */
 
-flex($layout = grow)
+stretch($layout = grow)
   if $layout is masonry
     flex: 1 0 auto
   else

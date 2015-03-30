@@ -78,7 +78,7 @@ figure
     block(1/3)
 ```
 
-By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply use the `flex()` mixin.
+By default FlexGrid displays elements in a traditional grid. This means elements won't expand to fill their container. To change this behavior, simply use the `stretch()` mixin.
 
 ```html
 <section>
@@ -94,10 +94,10 @@ section
 figure
   block(1/3)
   &:first-child
-    flex()
+    stretch()
 ```
 
-`flex()` can also be configured to create CSS [masonry](http://masonry.desandro.com/) easily.
+`stretch()` can also be configured to create CSS [masonry](http://masonry.desandro.com/) easily.
 
 ```html
 <section>
@@ -116,7 +116,7 @@ section
 img
   block(1/3)
   &:first-child
-    flex(masonry)
+    stretch(masonry)
 ```
 
 Finally, you may want to have a gutter for a specific grid. Just pass the `$gut` parameter your gutter size for both the `box()` and the `block()`.

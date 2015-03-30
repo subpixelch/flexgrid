@@ -1,7 +1,7 @@
 {
   "name": "flex-grid",
   "main": "stylus/flexgrid.styl",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "homepage": "https://github.com/corysimmons/flexgrid",
   "authors": [
     "Cory Simmons <cory@launchboxhq.com>",
@@ -25,14 +25,14 @@
     "test",
     "tests"
   ],
-  "_release": "4.0.4",
+  "_release": "4.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "4.0.4",
-    "commit": "cbbce4eb484a013c279d41d6187b93f0aecf5014"
+    "tag": "4.1.0",
+    "commit": "3ee6c3e4682d0694609cb962cebea3a273f03ec4"
   },
   "_source": "git://github.com/corysimmons/flexgrid.git",
-  "_target": "~4.0.4",
+  "_target": "~4.1.0",
   "_originalSource": "flex-grid",
   "_direct": true
 }
