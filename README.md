@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/flexgrid.svg">
-  <img src="https://img.shields.io/bower/v/flex-grid.svg">
-  <img src="http://img.shields.io/npm/dm/flexgrid.svg">
+  <img src="https://img.shields.io/npm/v/flexgrid.svg?style=flat-square">
+  <img src="https://img.shields.io/bower/v/flex-grid.svg?style=flat-square">
+  <img src="http://img.shields.io/npm/dm/flexgrid.svg?style=flat-square">
 </p>
 
 A unique Flexbox grid system for SCSS and Stylus that allows you to create horizontal or vertical Flexbox grids on-the-fly.
