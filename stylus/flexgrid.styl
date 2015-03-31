@@ -1,4 +1,4 @@
-// flexgrid 4.1.0 - https://github.com/corysimmons/flexgrid
+// flexgrid 5.0.0 - https://github.com/corysimmons/flexgrid
 
 
 $gutter = 30px
@@ -8,39 +8,52 @@ $gutter = 30px
  * Sets properties on a container necessary for flexed items to go inside. Think of this like your row in a row > column grid system, except it can work vertically as well as horizontally.
  *
  * @param {string} [$dir=row] - Which direction the layout will go. Accepts row (horizontal) or column (vertical).
- * @param {number} [$gut=$gutter] - Sets a custom gutter width for this grid. Accepts any CSS unit and should probably match the block()'s $gut value.
+ * @param {number} [$gut=$gutter] - Sets a custom gutter width for this grid. This should probably match the block()'s $gut value.
  *
  * @example
  *   .container
- *     box($dir: row, $gut: 60px)
+ *     box()
+ *     @media (max-width: 800px)
+ *       box(column)
  */
 
-box($dir = row, $gut = $gutter)
+box($ratios = 1, $dir = row, $gut = $gutter)
   display: flex
-  flex-wrap: wrap
   flex-direction: $dir
-
   if $dir is row
-    overflow-x: hidden
-    overflow-y: inherit
-  else
-    overflow-x: inherit
-    overflow-y: hidden
-
-  if $gut is not 0
-    if $dir is row
-      margin-left: -($gut / 2)
-      margin-right: -($gut / 2)
+    flex-wrap: wrap
+    $gut = $gut * .1
+    margin: auto -(_get-column($ratios, $gut)[1])%
+    height: auto
+    if $gut is not 0
+      width: s('calc(100% + %s)', (_get-column($ratios, $gut)[1] * 2)%)
     else
-      margin-top: -($gut / 2)
-      margin-bottom: -($gut / 2)
-      height: s('calc(100% + %s)', $gut)
+      width: 100%
+  else if $dir is column
+    flex-wrap: inherit
+    if $gut is not 0
+      $gut = $gut * .1
+      width: s('calc(100% + %s)', (_get-column($ratios, $gut)[1] * 2)%)
+      height: s('calc(100vh + %s)', (_get-column($ratios, $gut)[1] * 2)vh)
+      margin: (-($gut / 2)vh) (-(_get-column($ratios, $gut)[1])%)
+    else
+      height: 100%
+  else
+    overflow-y: hidden
+    if $gut is not 0
+      $gut = $gut * .1
+      width: s('calc(100% + %s)', (_get-column($ratios, $gut)[1] * 2)%)
+      height: s('calc(100vh + %s)', (_get-column($ratios, $gut)[1] * 2)vh)
+      margin: (-($gut / 2)vh) (-(_get-column($ratios, $gut)[1])%)
+    else
+      width: 100%
+      height: 100%
 
 
 /**
  * Specifies the sizing and spacing of the element it's applied to. The column in a row > column grid system except it can go vertical as well as horizontal.
  *
- * @param {fraction} [$ratio=1] - A fraction of the container for the element to span.
+ * @param {fraction} [$ratios=1] - A fraction of the container for the element to span.
  * @param {string} [$dir=row] - Which direction the layout will go. Accepts row (horizontal) or column (vertical).
  * @param {number} [$gut=$gutter] - Sets a custom gutter width for this element. Accepts any CSS unit and should probably match the box()'s $gut value.
  *
@@ -48,22 +61,44 @@ box($dir = row, $gut = $gutter)
  *   section
  *     box($gut: 60px)
  *     .element
- *       box(1/3, 60px)
+ *       block(1/3, 60px)
  */
 
-block($ratio = 1, $dir = row, $gut = $gutter)
-  if $gut is 0
-    flex: 0 0 s('calc(100% * %s)', $ratio)
-    margin-left: 0
-    margin-right: 0
+block($ratios = 1, $dir = row, $gut = $gutter, $output = normal)
+  if $dir is row
+    if $gut > 0
+      $gut = $gut * .1
+      if $output is normal or $output is bare
+        flex-basis: (_get-column($ratios, $gut)[0])%
+      if $output is normal or $output is init
+        height: auto
+        margin: auto (_get-column($ratios, $gut)[1])%
+    if $gut is 0
+      if $output is normal or $output is bare
+        flex-basis: (100% * $ratios[0])%
+  else if $dir is column
+    if $gut > 0
+      $gut = $gut * .1
+      width: s('calc(100% - %s)', (_get-column($ratios, $gut)[1] * 2)%)
+      if $output is normal or $output is bare
+        height: (_get-column($ratios, $gut)[0])vh
+      if $output is normal or $output is init
+        margin: (($gut / 2)vh) (_get-column($ratios, $gut)[1])%
+    if $gut is 0
+      if $output is normal or $output is bare
+        height: (100% * $ratios[0])%
   else
-    flex: 0 0 s('calc(100% * %s - %s)', $ratio, $gut)
-    if $dir is row
-      margin-left: ($gut / 2)
-      margin-right: ($gut / 2)
-    else
-      margin-top: ($gut / 2)
-      margin-bottom: ($gut / 2)
+    if $gut > 0
+      $gut = $gut * .1
+      if $output is normal or $output is bare
+        flex-basis: (_get-column($ratios, $gut)[0])%
+        height: (_get-column($ratios, $gut)[0])vh
+      if $output is normal or $output is init
+        margin: (($gut / 2)vh) (_get-column($ratios, $gut)[1])%
+    if $gut is 0
+      if $output is normal or $output is bare
+        width: (100% * $ratios[0])
+        height: (100% * $ratios[0])
 
 
 /**
@@ -90,34 +125,31 @@ stretch($layout = grow)
 
 
 /**
- * Creates a horizontal offset between columns. Unfortunately it's not possible to create a vertical offset between columns because CSS percentages are relative to the width of a containing element.
+ * Margin to the left or right of an elements depending on if the fraction passed is positive or negative.
  *
- * @param {fraction} [$ratio=1] - A fraction of the container for the element to set a margin of. Can be positive or negative.
- * @param {number} [$gut=$gutter] - Sets a custom gutter width for this offset. It should match the grid in question's gutter. Accepts any CSS unit.
+ * @param {fraction} [$ratios=false] - Fraction of the container to be offset.
+ * @param {number} [$gut=$gutter] - How large the gutter involved is, typically this won't be adjusted, but if you have set the columns for that row to have different gutters than default, you will need to match that gutter here as well.
  *
  * @example
- *   section
- *     box()
- *     > figure
- *       block(1/3)
- *       &:first-child
- *         offset(1/3)
+ *   .two-elements
+ *     block(1/3)
+ *     &:first-child
+ *       offset(1/3)
  */
 
-offset($ratio = 1, $gut = $gutter)
-  if $ratio is 0
-    margin-left: ($gut / 2)
-    margin-right: ($gut / 2)
-  if $gut > 0
-    if $ratio > 0
-      margin-right: s('calc(100% * %s + (%s / 2))', $ratio, $gut)
-    else
-      margin-left: s('calc(-100% * %s + (%s / 2))', $ratio, $gut)
-  else
-    if $ratio > 0
-      margin-right: s('calc(100% * %s)', $ratio)
-    else
-      margin-left: s('calc(100% * %s)', $ratio)
+offset($ratios = false, $gut = $gutter)
+  if $old
+    $gut = $gut * .1
+    if $gut > 0
+      if $ratios > 0
+        margin-left: ((_get-column($ratios, $gut)[0]) + ((_get-column($ratios, $gut)[1]) * 3))%
+      if $ratios < 0
+        margin-right: (-1 * ((_get-column($ratios, $gut)[0]) + (_get-column($ratios, $gut)[1])))%
+    if $gut is 0
+      if $ratios > 0
+        margin-left: (100% * $ratios)
+      if $ratios < 0
+        margin-right: (-100% * $ratios)
 
 
 /**
@@ -163,6 +195,54 @@ align($dir = both)
     justify-content: center
     align-items: center
 
+
+/**
+ * Reverses a list of numbers (or in our case, fractions)
+ *
+ * @param {fractions} $list - A list of numbers or fractions to be reversed.
+ *
+ * @example
+ *   $foo: 1/2 1/3 1/4
+ *   _reverse($foo)
+ *
+ * @return {fractions}
+ *
+ * @access private
+ */
+
+_reverse($list)
+  result = ()
+  for item in $list
+    prepend(result, item)
+  return result
+
+
+/**
+ * Gets a column's width and gutter size as an integer.
+ *
+ * @param {fraction} [$ratios=1] - A list of fractions to be used in calculating the appropriate width and gutter size returned.
+ * @param {number} [$gut=$gutter] - The gutter size used to generate an appropriate width and gutter size to be returned by the function.
+ *
+ * @example
+ *   .third
+ *     width: (_get-column(1/3, '30px')[0])%
+ *
+ * @return {fraction | number}
+ *
+ * @access private
+ */
+
+_get-column($ratios = 1, $gut = $gutter)
+  $ratios = _reverse($ratios)
+  $width = 100
+  for $ratio in $ratios
+    $gut = $gut / $width * 100
+    $width = 100 * $ratio - $gut
+  return $width ($gut / 2)
+
+
+html
+  overflow-y: auto
 
 html, body
   height: 100%
