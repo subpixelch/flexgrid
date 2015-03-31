@@ -150,6 +150,25 @@ $gutter: 30px;
 }
 
 
+/// Wrapper helper mixin for horizontal alignement without the use of margin: 0 auto
+/// Keeps the margin still functional as *real* margin and is not misused to only center the container
+/// The container is centered by transform: translateX
+/// Very handy to save another container around the wrapper to just center it
+///
+/// Example
+/// .wrapper{
+///   @include wrap(1000px, $hor: 30px, 0);
+///   }
+
+@mixin wrap($width: 1000px, $hor: $gutter, $ver: 0) {
+  max-width: $width;
+  position: relative;
+  margin: $ver $hor;
+  left: 50%;
+  $left: calc(-50% - #{$hor});
+  transform: translateX($left);
+}
+
 /// Vertically and/or horizontally align nested elements.
 ///
 /// @param {string} $dir [both] - Both, vertical, v, horizontal, or h.
